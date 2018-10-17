@@ -219,4 +219,6 @@ mallardDuck.performQuack() //执行叫声
 
 // 相关代码在同级目录有已经转义的js
 ```
+[相关代码 demo01](https://github.com/PsChina/DesignPattern/tree/master/demo01)
 
+设计原则: __多用组合，少用继承。“有一个”可能比“是一个”更好。__
