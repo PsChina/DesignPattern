@@ -122,3 +122,4 @@ mallardDuck.performQuack(); //执行叫声
 var squeak = new Squeak(); // 吱吱叫
 mallardDuck.setQuackBehavior(squeak); // 设置吱吱叫到绿头野鸭上
 mallardDuck.performQuack(); //执行叫声
+// 相关代码在同级目录有已经转义的js

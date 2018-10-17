@@ -79,7 +79,7 @@ abstract class Duck{
         this.setFlyBehavior(flyBehavior)
         this.setQuackBehavior(quackBehavior)
     }
-    setFlyBehavior(flyBehavior:FLYBEHAVIOR){ // 设置具体飞行欣慰
+    setFlyBehavior(flyBehavior:FLYBEHAVIOR){ // 设置具体飞行行为
         this.flyBehavior = flyBehavior
     }
     setQuackBehavior(quackBehavior:QUACKBEHAVIOR){ // 设置具体嘎嘎叫行为
