@@ -352,6 +352,10 @@ class WeatherData implements Subject {
 ### 实现当前天气
 
 ```ts
+interface DisplayElement { // 显示在浏览器的接口
+    display():void
+}
+
 class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
     private temperature: number // 温度
     private humidity: number // 湿度
