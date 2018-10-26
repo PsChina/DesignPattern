@@ -223,3 +223,5 @@ mallardDuck.performQuack() //执行叫声
 [相关代码 demo01](https://github.com/PsChina/DesignPattern/tree/master/demo01)
 
 有兴趣的朋友可以将 js 拷贝到浏览器控制台运行一下。
+
+(完)
