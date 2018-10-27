@@ -229,7 +229,7 @@ mallardDuck.performQuack() //执行叫声
 ```
 设计原则: __多用组合，少用继承。“有一个”可能比“是一个”更好。__
 
-### 总结
+#### 总结
 
 1 __不管软件设计的多好，一段时间之后，总是需要成长和改变，否则软件就会“死亡”,所以我们需要找出应用中可能需要改变的地方，把它们独立出来，不要和那些需要变化的代码混在一起。__
 
@@ -350,7 +350,7 @@ class WeatherData implements Subject {
 }
 ```
 
-### 实现当前天气
+#### 实现当前天气
 
 ```ts
 interface DisplayElement { // 显示在浏览器的接口
@@ -381,7 +381,7 @@ class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
 }
 ```
 
-### 初始化
+#### 初始化
 
 ```ts
     const bulletinBoard = document.body // 布告栏
