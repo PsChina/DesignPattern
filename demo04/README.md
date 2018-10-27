@@ -155,7 +155,6 @@ huNanPizzaStore.orderPizza('veggie')
 
 效果
 ```
-huNanPizzaStore.orderPizza('veggie');
 
 VM165:16 添加佐料
 VM165:19 添加雪花大肥牛
