@@ -718,7 +718,7 @@ class Singleton {
     static instance // 静态变量
     public name // 局部变量
     constructor(){
-        if(Singleton.instance){ // 如果单例不存在
+        if(Singleton.instance){ // 如果单例存在
             return Singleton.instance // 中断构造函数的建造过程返回单例
         }
         Singleton.instance = this // 否则让构造函数正常运行新建单例并且保存下来
