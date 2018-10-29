@@ -30,7 +30,7 @@ class DependentPizzaStore { // 一个依赖具体实现的披萨商店
         }
         return pizza
     }
-    pulic orderPizza(type:string,style:string){ // 收到披萨订单会调用该方法 
+    public orderPizza(type:string,style:string){ // 收到披萨订单会调用该方法 
         let pizza = this.createPizza(type,style) // 创建披萨
         pizza.prepare() // 加工前的准备工作
         pizza.bake() // 烘焙
