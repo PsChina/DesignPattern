@@ -1,5 +1,5 @@
 
-## 单件模式 (singleton Pattern)
+## 单件模式 (Singleton Pattern)
 
 定义: 确保一个类只有一个实例，并提供一个局部访问点。
 
