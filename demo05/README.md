@@ -5,7 +5,7 @@
 
 单件模式也称单例模式。
 
-js 没有多线程所以在 ts 没有 `synchronized` `volatile` 这样的关键字
+js 没有多线程所以在 ts 没有 `synchronized` `volatile` 这样的关键字，不能练习多线程下的单件模式。
 
 在 js 中单件模式其实在很多地方被用到比如 vue 的 vueRouter ，eventBus 等。
 
