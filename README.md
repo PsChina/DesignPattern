@@ -708,7 +708,7 @@ undefined
 
 单件模式也称单例模式。
 
-js 没有多线程所以在 ts 没有 `synchronized` `volatile` 这样的关键字
+js 没有多线程所以在 ts 没有 `synchronized` `volatile` 这样的关键字，不能练习多线程下的单件模式。
 
 在 js 中单件模式其实在很多地方被用到比如 vue 的 vueRouter ，eventBus 等。
 
@@ -719,7 +719,7 @@ class Singleton {
     static instance // 静态变量
     public name // 局部变量
     constructor(){
-        if(Singleton.instance){ // 如果单例不存在
+        if(Singleton.instance){ // 如果单例存在
             return Singleton.instance // 中断构造函数的建造过程返回单例
         }
         Singleton.instance = this // 否则让构造函数正常运行新建单例并且保存下来
