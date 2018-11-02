@@ -893,7 +893,6 @@ class Turkey {
 
 我们有两种适配方案 
 
-1.对象适配器
 #### 对象适配器
 ```ts
 class ObjectAdapter implements QuackAble{ // 对象适配器
@@ -910,7 +909,7 @@ class ObjectAdapter implements QuackAble{ // 对象适配器
 }
 ```
 
-2.类适配器
+#### 类适配器
 ```ts
 class ClassAdapter extends Turkey { // 类适配器
     quack(){ // 直接转换接口
