@@ -6,6 +6,10 @@
 
 在本章，我们将要进行一项任务，其不可能程度，简直就像是将一个方块放进一个圆洞中。
 
+适配器模式uml类图:
+
+![适配器模式uml类图](https://github.com/PsChina/DesignPattern/blob/master/images/adapter_pattern.png)
+
 假设一小鸭子遇到了一只火鸡，但它以为它遇到的是一只成年的大鸭子并且和它用鸭语沟通，那么我们要怎么设计这个适配器呢？
 
 #### 基本设施
