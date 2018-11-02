@@ -761,7 +761,17 @@ VM18139:17 instance1 === instance2 ? ==> true
 主要解决：在软件系统中，行为请求者与行为实现者通常是一种紧耦合的关系，但某些场合，比如需要对行为进行记录、撤销或重做、事务等处理时，这种无法抵御变化的紧耦合的设计就不太合适。
 
 
-关键代码：定义三个角色：1、received 真正的命令执行对象 2、Command 3、invoker 使用命令对象的入口
+关键代码：
+
+需要定义三个角色：
+
+1、received 真正的命令执行对象 
+
+2、Command 命令
+
+3、invoker 使用命令对象的入口
+
+我们来实现一个用户用遥控器打开客厅的灯的demo
 
 #### Command
 
@@ -809,16 +819,11 @@ class SimpleRemoteControl {
 }
 ```
 
-#### 我们还需要一个会使用命令模式(遥控器)的客户
+#### 我们还需要一个会使用命令模式(遥控器)的用户
 
 ```ts
-class Client { // 这是一个使用命令模式的客户
-    public openLight(){ // 它使用遥控器开灯
-        // 首先他要拿到一个遥控器
-        let remoteControl = new SimpleRemoteControl()
-        // 接下来生成一个开灯命令
-          // 需要确定哪个灯应该被打开
-        let light = new LivingRoomLight()
+class User { // 这是一个使用命令模式的客户
+    public openLightWithControl(light:Light, remoteControl:SimpleRemoteControl){ // 它使用遥控器开灯
           // 生成将灯打开的命令
         let command = new LightOnCommand(light) // 生成一个打开客厅灯的命令
         // 然后将命令注入遥控器
@@ -834,11 +839,17 @@ class Client { // 这是一个使用命令模式的客户
 ```ts
 // 测试一下
 
-let client = new Client()
+// 新建遥控器
+let remoteControl = new SimpleRemoteControl()
+// 新建灯
+let light = new LivingRoomLight()
+// 新建用户
+let user = new User()
 
-client.openLight() // 用遥控器开灯
+user.openLightWithControl(light, remoteControl) // 用遥控器开灯
 
 ```
+有兴趣的朋友可以尝试封装一个关灯命令
 
 #### 浏览器输出结果
 
