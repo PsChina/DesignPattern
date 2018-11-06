@@ -246,6 +246,8 @@ mallardDuck.performQuack() //执行叫声
 
 有兴趣的朋友可以将 js 拷贝到浏览器控制台运行一下。
 
+(demo1 完)
+
 ### demo02 观察者模式
 
 定义:在对象之间定义一对多的依赖，这样一来，当一个对象改变状态，依赖它的对象都会收到通知，并自动更新。
@@ -406,6 +408,10 @@ class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
 
 详细的代码在demo2已经编译成了 js 并且可以直接运行，有兴趣的朋友可以运行试着一下。
 
+[相关代码 demo02](https://github.com/PsChina/DesignPattern/tree/master/demo02)
+
+(demo02 完)
+
 ### demo03 装饰器模式
 
 定义: 动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。
@@ -527,6 +533,9 @@ cappuccino.cost() // 28
 ```
 
 完美解决类爆炸的问题
+[相关代码 demo03](https://github.com/PsChina/DesignPattern/tree/master/demo03)
+
+(demo03 完)
 
 ### demo04 工厂模式
 
@@ -704,6 +713,9 @@ VM165:62 HuNanVeggiePizza {toppings: Array(2), name: "湖南素披萨"}name: "�
 undefined
 ```
 
+[相关代码 demo04](https://github.com/PsChina/DesignPattern/tree/master/demo04)
+
+(demo04 完)
 ### demo05 单件模式
 
 定义: 确保一个类只有一个实例，并提供一个局部访问点。
@@ -752,6 +764,10 @@ VM18139:14 instance2.name:A
 VM18139:16 instance2.name:B
 VM18139:17 instance1 === instance2 ? ==> true
 ```
+
+[相关代码 demo05](https://github.com/PsChina/DesignPattern/tree/master/demo05)
+
+(demo05 完)
 
 ### demo06 命令模式
 
@@ -858,6 +874,9 @@ user.openLightWithControl(light, remoteControl) // 用遥控器开灯
 开灯
 undefined
 ```
+[相关代码 demo06](https://github.com/PsChina/DesignPattern/tree/master/demo06)
+
+(demo06 完)
 
 ### demo07 适配器模式
 
@@ -1010,6 +1029,10 @@ VM109:51 类型二
 VM109:51 类型三
 undefined
 ```
+
+[相关代码 demo07](https://github.com/PsChina/DesignPattern/tree/master/demo07)
+
+(demo07 完)
 
 ### demo08 模板方法模式
 
@@ -1198,3 +1221,6 @@ VM108:62 倒进杯子
 VM108:75 加糖和牛奶
 ```
 
+[相关代码 demo08](https://github.com/PsChina/DesignPattern/tree/master/demo08)
+
+(demo08 完)
