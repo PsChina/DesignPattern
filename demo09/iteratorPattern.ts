@@ -33,7 +33,7 @@ while(arrayIterator.hasNext()){
     console.log(arrayIterator.next())
 }
 
-var arr2 = [1,2,3]
+const arr2 = [1,2,3]
 const $ = {
     each(arr:Array<any>,callback:Function){
         let arrayIterator = new ArrayIterator(arr)
