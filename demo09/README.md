@@ -2,6 +2,13 @@
 
 定义: 提供一种方法顺序访问一个聚合对象中的各个元素，而又不暴露其内部的表示。
 
+实际上 jQuery 就已经实现了迭代器 $.each
+
+```js
+$.each([1,2,3], function(index, value){
+    console.log(index, value)
+})
+```
 
 一般的迭代，我们至少要有2个方法，hasNext() 和 next() ，这样才做做到遍历所有对象，所以我们的迭代器接口如下：
 
@@ -61,18 +68,10 @@ VM112:21 5
 undefined
 ```
 
-实际上 jquery 就已经实现了迭代器 $.each
-
-```js
-$.each([1,2,3], function(index, value){
-    console.log(index, value)
-})
-```
-
-我们可以模拟实现一下
+最后模拟实现 jQuery 的 each 方法
 
 ```ts
-var arr2 = [1,2,3]
+const arr2 = [1,2,3]
 const $ = {
     each(arr:Array<any>,callback:Function){
         let arrayIterator = new ArrayIterator(arr)
