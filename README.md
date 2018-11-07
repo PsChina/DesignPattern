@@ -1235,7 +1235,7 @@ VM108:75 加糖和牛奶
 实际上 jQuery 就已经实现了迭代器 $.each
 
 ```js
-$.each([1,2,3], function(index, value){
+$.each([1,2,3], function(index, value) {
     console.log(index, value)
 })
 ```
@@ -1253,23 +1253,23 @@ interface Iterator<T> {
 
 ```ts
 class ArrayIterator implements Iterator<any>{
-    private arr:Array<any>
+    private arr: Array<any>
     private index: number
-    constructor(arr:Array<any>){
+    constructor (arr: Array<any>) {
         this.arr = arr
         this.index = 0
     }
-    hasNext(){
-        if(this.index<this.arr.length){
+    hasNext() {
+        if (this.index < this.arr.length) {
             return true
         }
         this.index = 0
         return false
     }
-    next(){
+    next() {
         return this.arr[this.index++]
     }
-    getIndex(){
+    getIndex() {
         return this.index
     }
 }
@@ -1282,7 +1282,7 @@ let arr1 = [1,2,3,4,5]
 
 let arrayIterator = new ArrayIterator(arr1)
 
-while(arrayIterator.hasNext()){
+while (arrayIterator.hasNext()) {
     console.log(arrayIterator.next())
 }
 ```
@@ -1303,15 +1303,15 @@ undefined
 ```ts
 const arr2 = [1,2,3]
 const $ = {
-    each(arr:Array<any>,callback:Function){
+    each (arr:Array<any>, callback:Function) {
         let arrayIterator = new ArrayIterator(arr)
-        while(arrayIterator.hasNext()){
-            callback(arrayIterator.getIndex(),arrayIterator.next())
+        while (arrayIterator.hasNext()) {
+            callback(arrayIterator.getIndex(), arrayIterator.next())
         }
     }
 }
 
-$.each(arr2, function(index, value){
+$.each (arr2, function(index, value) {
     console.log(index, value)
 })
 ```
