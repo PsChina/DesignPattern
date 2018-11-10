@@ -82,7 +82,7 @@ abstract class Beverage { // 饮料
         });
         return currentPrice
     }
-    setSeasoning(seasoning:Seasoning){ // 设置咖啡
+    setSeasoning(seasoning:Seasoning){ // 设置调料
         this.seasoningList.push(seasoning)
     }
     getDescription(){ // 获取描述信息
