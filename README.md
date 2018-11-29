@@ -1,4 +1,4 @@
-## designPattern
+# designPattern
 
 这个仓库用于学习和分享设计模式。
 
@@ -8,7 +8,7 @@
 
 所幸 js 程序员可以使用 Typescript 来写 demo 练习。
 
-### 目录
+## 目录
 
 1. [策略模式](#demo01-策略模式)
 1. [观察者模式](#demo02-观察者模式)
@@ -20,6 +20,7 @@
 1. [模板方法模式](#demo08-模板方法模式)
 1. [迭代器模式](#demo09-迭代器模式)
 1. [状态模式](#demo10-状态模式)
+1. [代理模式](#demo11-代理模式)
 
 ### demo01 策略模式
 
@@ -62,7 +63,6 @@ class RedHeadDuck extends Duck{ // 红头鸭
 
 去年，公司的竞争压力加剧，公司主管认为是时候创新了，他们需要在“下周”的股东会议上展示一些“真正”让人印象深刻的东西来振奋人心。---让模拟程序的鸭子能飞来甩掉竞争者。
 
-
 Joe 的经理拍着胸脯告诉主管们，Joe只需要一个星期就可以搞定。“毕竟，Joe 是一个 OO 程序员...这有什么困难？”
 
 Joe 想：他只需要在 Duck 类中加上 fly() 方法， 然后所有鸭子都会继承 fly() ，正是他大显身手，展示 OO 才华的时候了。
@@ -78,13 +78,13 @@ abstract class Duck { // 鸭子超类 （抽象基类）
 }
 ```
 
-#### 但是可怕的问题发生了...
+__但是可怕的问题发生了...__
 
 在股东会议上出现很多 “橡皮鸭子” 在屏幕上飞来飞去。
 
 原来 Joe 忽略了一件事: 并非所有的鸭子都会飞。
 
-#### Joe 想到了继承 
+#### Joe 想到了继承
 
 他可以把橡皮鸭类中的 fly() 方法覆盖掉：
 
@@ -128,6 +128,7 @@ class RubbrDuck extends Duck { // 橡皮鸭
 现在为了分开“变化和不会变化的部分”，我们准备建立两组类(完全远离Duck类)，一个是 fly 相关，一个是 quack 相关的，每一组类将实现各自的动作。比方说，我们可能有一个类实现“呱呱叫”，另一个实现“吱吱叫”，还有一个实现“安静”
 
 像这样
+
 ```ts
 interface QuackBehavior{
     quack():void
@@ -159,6 +160,7 @@ class FlyNoWay implements FlyBehavior{
     }
 }
 ```
+
 以上代码运用了一个设计原则：  __针对接口编程而不是针对实现编程__ 。
 
 如果这样做那将来不论是维护还是扩展都会变得轻松我们来写一个 demo 体验一下
@@ -234,6 +236,7 @@ mallardDuck.performQuack() //执行叫声
 
 // 相关代码在同级目录有已经转义的js
 ```
+
 设计原则: __多用组合，少用继承。“有一个”可能比“是一个”更好。__
 
 #### 总结
@@ -267,7 +270,6 @@ mallardDuck.performQuack() //执行叫声
 3、观察显示当前天气的各种数据。
 4、观察预测将来的天气（天气预报）。
 
-
 学习观察者模式需要了解的知识点：
 
 #### 主题
@@ -295,7 +297,6 @@ interface Observer {
 ```
 
 以上是观察者接口，所有潜在的观察者必须实现观察者接口，这个接口只有 updata 一个方法。
-
 
 #### 使用观察者模式实现气象站
 
@@ -347,7 +348,7 @@ class WeatherData implements Subject {
             let temperature = Math.random()*38 - 10
             let humidity = Math.random()
             let pressure = 95 + Math.random()*5
-            this.measurementsChange(Number(temperature.toFixed(1)),Number(humidity.toFixed(1)), Number(pressure.toFixed(1)))            
+            this.measurementsChange(Number(temperature.toFixed(1)),Number(humidity.toFixed(1)), Number(pressure.toFixed(1)))
         }, 0);
         setInterval(()=>{
             let temperature = Math.random()*38 - 10
@@ -396,11 +397,11 @@ class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
     const bulletinBoard = document.body // 布告栏
 
     const weatherData = new WeatherData() // 天气
-    
+
     const currentWeatherDisplayView = document.createElement('div') // 创建一个div显示 当前天气
-    
+
     const currentWeatherDisplay = new CurrentWeatherDisplay(currentWeatherDisplayView) // 当前天气
-    
+
     weatherData.registerObserver(currentWeatherDisplay) // 将当前天气注册成观察者
 
     bulletinBoard.appendChild( // 在布告栏绑定当前天气
@@ -417,7 +418,6 @@ class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
 ### demo03 装饰器模式
 
 定义: 动态地将责任附加到对象上。若要扩展功能，装饰者提供了比继承更有弹性的替代方案。
-
 
 假如我们需要为一家咖啡店比如星巴克写一个自动售货系统，需要定义各种各样的咖啡类，这时候我们应该如何定义？
 
@@ -515,7 +515,7 @@ class Cappuccino extends Beverage { // 卡布奇诺
 }
 
 
-let cappuccino = new Cappuccino () // 有人点了一杯卡布奇诺 
+let cappuccino = new Cappuccino () // 有人点了一杯卡布奇诺
 
 // 加咖啡
 
@@ -529,7 +529,7 @@ let milk = new Milk()
 
 cappuccino.setSeasoning(milk)
 
-// 计算价格 
+// 计算价格
 
 cappuccino.cost() // 28
 ```
@@ -572,7 +572,7 @@ class DependentPizzaStore { // 一个依赖具体实现的披萨商店
         }
         return pizza
     }
-    public orderPizza(type:string,style:string){ // 收到披萨订单会调用该方法 
+    public orderPizza(type:string,style:string){ // 收到披萨订单会调用该方法
         let pizza = this.createPizza(type,style) // 创建披萨
         pizza.prepare() // 加工前的准备工作
         pizza.bake() // 烘焙
@@ -587,7 +587,7 @@ class DependentPizzaStore { // 一个依赖具体实现的披萨商店
 
 #### 依赖倒置
 
-__通常情况下使用继承都是子类依赖父类的具体实现，而依赖倒置则是子类实现父类的抽象，父类依赖子类的具体实现。__
+__通常情况下使用继承都是子类依赖父类的具体实现，而依赖倒置则是子类实现父类的抽象，父类依赖子类的具体实现__。
 
 我们发现上面的代码中 `DependentPizzaStore` 创建披萨的函数，依赖于具体实现。
 
@@ -598,9 +598,9 @@ __通常情况下使用继承都是子类依赖父类的具体实现，而依赖
 让具体的地方加盟店实现能生产具有地方特色的披萨 `createPizza` 函数
 
 ```ts
-abstract class PizzaStore { // 一个依赖抽象方法的披萨商店 
-    public abstract createPizza(type:string):Pizza // 
-    public orderPizza(type:string){ // 收到披萨订单会调用该方法 
+abstract class PizzaStore { // 一个依赖抽象方法的披萨商店
+    public abstract createPizza(type:string):Pizza
+    public orderPizza(type:string){ // 收到披萨订单会调用该方法
         let pizza = this.createPizza(type) // 创建披萨
         pizza.prepare() // 加工前的准备工作
         pizza.bake() // 烘焙
@@ -642,7 +642,7 @@ class HuNanPizzaStore extends PizzaStore {
 abstract class Pizza{ // 披萨
     public name:string //名称
     public dough:string //面团类型
-    public sauce:string // 酱料类型 
+    public sauce:string // 酱料类型
     public toppings:Array<string> // 一套佐料
     constructor(toppings:Array<string>){
         this.toppings = toppings
@@ -680,6 +680,7 @@ class HuNanVeggiePizza extends Pizza {
 ```
 
 试一试
+
 ```ts
 // 开一家湖南披萨加盟店
 let huNanPizzaStore = new HuNanPizzaStore()
@@ -696,7 +697,8 @@ huNanPizzaStore.orderPizza('veggie')
 ```
 
 效果
-```
+
+```log
 huNanPizzaStore.orderPizza('veggie');
 
 VM165:16 添加佐料
@@ -762,7 +764,8 @@ console.log(`instance1 === instance2 ? ==> ${instance1 === instance2}`)
 ```
 
 浏览器输出结果：
-```
+
+```log
 VM18139:12 instance1.name:A
 VM18139:14 instance2.name:A
 VM18139:16 instance2.name:B
@@ -781,12 +784,11 @@ VM18139:17 instance1 === instance2 ? ==> true
 
 主要解决：在软件系统中，行为请求者与行为实现者通常是一种紧耦合的关系，但某些场合，比如需要对行为进行记录、撤销或重做、事务等处理时，这种无法抵御变化的紧耦合的设计就不太合适。
 
-
 关键代码：
 
 需要定义三个角色：
 
-1、received 真正的命令执行对象 
+1、received 真正的命令执行对象
 
 2、Command 命令
 
@@ -797,6 +799,7 @@ VM18139:17 instance1 === instance2 ? ==> true
 #### Command
 
 命令对象提供了 execute() 这个方法封装了命令实际调用者的执行动作
+
 ```ts
 interface Command { // 命令接口
     execute():void
@@ -828,6 +831,7 @@ class LivingRoomLight implements Light { // 客厅的灯
 遥控器内持有一个命令插槽可以插入任何命令
 
 当按钮按下时便会让命令执行
+
 ```ts
 class SimpleRemoteControl {
     public slot:Command
@@ -870,14 +874,16 @@ let user = new User()
 user.openLightWithControl(light, remoteControl) // 用遥控器开灯
 
 ```
+
 有兴趣的朋友可以尝试封装一个关灯命令
 
 #### 浏览器输出结果
 
-```
+```log
 开灯
 undefined
 ```
+
 [相关代码 demo06](https://github.com/PsChina/DesignPattern/tree/master/demo06)
 
 (demo06 完)
@@ -897,6 +903,7 @@ undefined
 假设一小鸭子遇到了一只火鸡，但它以为它遇到的是一只成年的大鸭子并且和它用鸭语沟通，那么我们要怎么设计这个适配器呢？
 
 #### 基本设施
+
 ```ts
 interface QuackAble {
     quack():void
@@ -915,9 +922,10 @@ class Turkey {
 }
 ```
 
-我们有两种适配方案 
+我们有两种适配方案
 
 #### 对象适配器
+
 ```ts
 class ObjectAdapter implements QuackAble{ // 对象适配器
     private turkey:Turkey
@@ -934,6 +942,7 @@ class ObjectAdapter implements QuackAble{ // 对象适配器
 ```
 
 #### 类适配器
+
 ```ts
 class ClassAdapter extends Turkey { // 类适配器
     quack(){ // 直接转换接口
@@ -945,6 +954,7 @@ class ClassAdapter extends Turkey { // 类适配器
 接下来我们分别测试一下这两种方案，看看能不能让火鸡调用嘎嘎叫这个方法来发出叫声。
 
 测试对象适配器
+
 ```ts
 let turkey = new Turkey() // 创建火鸡
 
@@ -956,12 +966,14 @@ turkeyAdapter.quack() // 让火鸡以嘎嘎叫的方式咯咯叫
 ```
 
 浏览器输出结果
-```
+
+```log
 咯咯叫
 undefined
 ```
 
 测试类适配器
+
 ```ts
 let turkeyDuck = new ClassAdapter() // 新建火鸡扩展类实例---火鸡鸭
 
@@ -969,7 +981,8 @@ turkeyDuck.quack() // 让火鸡鸭嘎嘎叫
 ```
 
 浏览器输出结果
-```
+
+```log
 咯咯叫
 undefined
 ```
@@ -977,6 +990,7 @@ undefined
 #### 一个将枚举用适配器适配迭代器的例子
 
 枚举类型
+
 ```ts
 enum Types {
     type1 = '类型一',
@@ -984,7 +998,9 @@ enum Types {
     type3 = '类型三'
 }
 ```
+
 枚举类型迭代适配器
+
 ```ts
 class ArrayAdapterOfEnum {
     private anyEnum:object
@@ -1017,6 +1033,7 @@ class ArrayAdapterOfEnum {
 ```
 
 测试
+
 ```ts
 let arrayAdapterOfEnum = new ArrayAdapterOfEnum()
 
@@ -1027,7 +1044,7 @@ for(let item of arrayAdapterOfEnum.setEnum(Types)){
 
 浏览器输出结果
 
-```
+```log
 VM109:51 类型一
 VM109:51 类型二
 VM109:51 类型三
@@ -1047,11 +1064,12 @@ undefined
 我们将要深入封装算法模块，好让子类可以在任何时候都可以将自己挂接进运算里。我们甚至会在本章学到一个受到好莱坞影响而启发的设计原则。
 
 #### 多来点咖啡因吧
+
 有些人没有咖啡就活不下去；有些人则离不开茶。两者共同成分是什么？当然是咖啡因了！
 
 但还不只是这样；茶和咖啡的冲泡方式非常相似，不信你瞧瞧
 
-__星巴兹咖啡师傅训练手册__
+#### 星巴兹咖啡师傅训练手册
 
 各位师傅!准备星巴兹软饮时，请精确地遵循下面的冲泡法：
 
@@ -1075,13 +1093,12 @@ __星巴兹咖啡师傅训练手册__
 
 (4)加柠檬
 
-
 所有的冲泡方法都是星巴兹咖啡公司的商业机密，必须严格保密。
 
 快速搞定几个咖啡和茶的类（用 typescript ）
 
+#### Coffe 类
 
-__Coffe 类__
 ```ts
 class Coffee {
     constructor(){ // 这是我们的咖啡冲泡法，直接取自训练手册
@@ -1107,7 +1124,8 @@ class Coffee {
 
 接下来是茶.....
 
-__Tea 类__
+#### Tea 类
+
 ```ts
 class Tea {
     constructor(){ // 这是我们的茶冲泡法，直接取自训练手册
@@ -1135,7 +1153,6 @@ class Tea {
 
 ![uml类图](https://github.com/PsChina/DesignPattern/blob/master/images/template_pattern.jpg)
 
-
 #### 更进一步的设计
 
 （一）
@@ -1155,7 +1172,7 @@ abstract class CaffeineBeverage{
         this.brew() // 统一后的方法
         this.pourInCup()
         this.addCondiments() // 统一后的方法
-    }    
+    }
 }
 ```
 
@@ -1214,7 +1231,8 @@ class Coffee extends CaffeineBeverage {
 ```
 
 浏览器输出结果:
-```
+
+```log
 VM108:59 煮沸水
 VM108:85 用沸水浸泡茶叶
 VM108:62 倒进杯子
@@ -1290,7 +1308,7 @@ while (arrayIterator.hasNext()) {
 
 浏览器运行结果
 
-```
+```log
 VM112:21 1
 VM112:21 2
 VM112:21 3
@@ -1319,12 +1337,13 @@ $.each (arr2, function(index, value) {
 
 浏览器运行结果
 
-```
+```log
 VM115:36 0 1
 VM115:36 1 2
 VM115:36 2 3
 undefined
 ```
+
 [相关代码 demo09](https://github.com/PsChina/DesignPattern/tree/master/demo09)
 
 (demo09 完)
@@ -1332,7 +1351,6 @@ undefined
 ### demo10 状态模式
 
 定义:允许对象在内部状态发生改变时改变它的行为，对象看起来好像修改了它的类。
-
 
 这个模式书上的篇幅稍微有点长（p385-p428）共 43 页，我大概花了一个小时的时间，才阅读完毕，但是阅读这篇文件应该不需要那么久。
 
@@ -1346,7 +1364,6 @@ undefined
 
 4 状态模式
 
-
 #### 应用场景
 
 万能糖果公司想设计一款糖果自动售货机
@@ -1355,8 +1372,7 @@ undefined
 
 ![糖果自动售货机状态](https://github.com/PsChina/DesignPattern/blob/master/images/status.jpg)
 
-
-所有状态:
+__所有状态__:
 
 Status1: 没有 25 分钱
 
@@ -1366,8 +1382,7 @@ Status3: 售出糖果
 
 Status4: 糖果售罄
 
-
-所有行为:（触发行为将改变状态）
+__所有行为__:（触发行为将改变状态）
 
 ActionA: 投入 25 分钱
 
@@ -1376,7 +1391,6 @@ ActionB: 退回 25 分钱
 ActionC: 转动曲柄
 
 ActionD: 发放糖果
-
 
 #### 一个糟糕的实例
 
@@ -1404,7 +1418,7 @@ class GumballMachine {
             this.status = this.NO_QUARTER
         } else {
             // 否则将状态设置为售罄。
-            this.status = this.SOLD_OUT            
+            this.status = this.SOLD_OUT
         }
     }
     public getCurrentStatus(){ // 返回售货机当前状态
@@ -1425,7 +1439,7 @@ class GumballMachine {
             case this.SOLD_OUT: // 已经售罄还投币
                 console.log('你不能投币，机器内糖果已经售罄。')
                 break;
-                
+
             case this.SOLD: // 已经操作摇杆正在销售糖果的情况下再次投币
                 console.log('请等待糖果机吐出糖果。')
                 break;
@@ -1449,7 +1463,7 @@ class GumballMachine {
             case this.SOLD_OUT: // 已经售罄的情况退钱
                 console.log('你不能退钱，你还没有投入 25 分钱。')
                 break;
-                
+
             case this.SOLD: // 如果已经操作摇杆正在销售糖果的情况下退钱
                 console.log('对不起你已经摇了销售糖果的摇杆，无法退回 25 分钱。')
                 break;
@@ -1487,7 +1501,7 @@ class GumballMachine {
         switch (this.status) { // 更具当前状态做出不同的动作
 
             case this.SOLD: // 发放糖果
-                this.count -= 1 //库存减一    
+                this.count -= 1 //库存减一
                 if( this.count === 0 ) { // 库存为零
                     console.log('已售罄。')
                     this.status = this.SOLD_OUT // 改为已售罄状态
@@ -1514,6 +1528,7 @@ class GumballMachine {
     }
 }
 ```
+
 ##### 内部测试
 
 完成后我们先做一个小小的内部测试:
@@ -1589,7 +1604,7 @@ gumballMachine.insertQuarter()
 
 浏览器输出结果:
 
-```
+```log
 VM151:107 当前状态：
 VM151:108 没有 25 分钱
 VM151:110 投入一枚25分钱的硬币
@@ -1920,7 +1935,7 @@ interval = setInterval(()=>{
 
 浏览器输出结果:
 
-```
+```log
 VM153:329 投入一枚25分钱的硬币
 VM153:332 转动曲柄
 VM153:233 售出糖果
