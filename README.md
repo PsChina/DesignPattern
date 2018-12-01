@@ -1966,3 +1966,5 @@ VM153:340 售罄
 [相关代码 demo10](https://github.com/PsChina/DesignPattern/tree/master/demo10)
 
 (demo10 完)
+
+### demo11 代理模式
