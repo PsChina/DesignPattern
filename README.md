@@ -538,6 +538,8 @@ cappuccino.cost() // 28
 
 [相关代码 demo03](https://github.com/PsChina/DesignPattern/tree/master/demo03)
 
+[es7 装饰器传送门](https://github.com/PsChina/Vue/blob/master/es6/decorator.md)
+
 (demo03 完)
 
 ### demo04 工厂模式
