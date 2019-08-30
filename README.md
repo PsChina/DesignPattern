@@ -89,7 +89,7 @@ __但是可怕的问题发生了...__
 他可以把橡皮鸭类中的 fly() 方法覆盖掉：
 
 ```ts
-class RubbrDuck extends Duck { // 橡皮鸭
+class RubberDuck extends Duck { // 橡皮鸭
     constructor(){
         super()
     }
@@ -435,7 +435,7 @@ class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
 
 3 以牛奶（Milk）对象装饰它
 
-4 调用 cost() 方法, 并依赖委托（delegete）将调料的价钱加上去
+4 调用 cost() 方法, 并依赖委托（delegate）将调料的价钱加上去
 
 ```ts
 
@@ -566,11 +566,11 @@ class DependentPizzaStore { // 一个依赖具体实现的披萨商店
             }
             // ... other type
         } else if(style === 'Chicago') { // 芝加哥风味
-            // new Chicago tyle pizza
+            // new Chicago type pizza
         } else if(style === 'California') { // 加利福尼亚风味
-            // new California tyle pizza
+            // new California type pizza
         } else {
-            throw new Error('Style not found!')
+            throw new Error('style not found!')
         }
         return pizza
     }
@@ -1099,7 +1099,7 @@ undefined
 
 快速搞定几个咖啡和茶的类（用 typescript ）
 
-#### Coffe 类
+#### Coffee 类
 
 ```ts
 class Coffee {

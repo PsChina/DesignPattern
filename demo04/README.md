@@ -22,11 +22,11 @@ class DependentPizzaStore { // 一个依赖具体实现的披萨商店
             }
             // ... other type
         } else if(style === 'Chicago') { // 芝加哥风味
-            // new Chicago tyle pizza
+            // new Chicago type pizza
         } else if(style === 'California') { // 加利福尼亚风味
-            // new California tyle pizza
+            // new California type pizza
         } else {
-            throw new Error('Style not found!')
+            throw new Error('style not found!')
         }
         return pizza
     }

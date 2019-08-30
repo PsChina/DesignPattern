@@ -65,7 +65,7 @@ abstract class Duck { // 鸭子超类 （抽象基类）
 他可以把橡皮鸭类中的 fly() 方法覆盖掉：
 
 ```ts
-class RubbrDuck extends Duck { // 橡皮鸭
+class RubberDuck extends Duck { // 橡皮鸭
     constructor(){
         super()
     }
