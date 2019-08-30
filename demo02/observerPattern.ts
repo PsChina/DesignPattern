@@ -5,7 +5,7 @@ interface Subject {
 }
 
 interface Observer {
-    updata(temperature:number,humidity:number,pressure:number):void
+    update(temperature:number,humidity:number,pressure:number):void
 }
 
 interface Watcher {
@@ -34,7 +34,7 @@ class WeatherData implements Subject {
     }
     public notifyObservers(observers = this.observers) { // 通知观察者
         for(let observer of observers){
-            observer.updata(this.temperature,this.humidity,this.pressure) // 更新
+            observer.update(this.temperature,this.humidity,this.pressure) // 更新
         }
     }
     getTemperature(){ // 获取温度
@@ -83,7 +83,7 @@ class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
     constructor(view:HTMLElement){
         this.view = view
     }
-    updata(temperature:number,humidity:number,pressure:number){
+    update(temperature:number,humidity:number,pressure:number){
         this.temperature = temperature
         this.humidity = humidity
         this.pressure = pressure
@@ -141,7 +141,7 @@ class ExtremeWeatherDisplay implements Observer, DisplayElement{ // 极端天气
     getAvgPressure(){
         return this.avg_pressure
     }
-    updata(temperature:number,humidity:number,pressure:number){ // 更新天气
+    update(temperature:number,humidity:number,pressure:number){ // 更新天气
         this.history.push({
             temperature,
             humidity,
@@ -242,7 +242,7 @@ class FashionAdviceDisplay implements Observer, DisplayElement{
     setBaseVals(obj:BaseVal){
         this.baseVals = obj
     }
-    updata(temperature:number,humidity:number,pressure:number){
+    update(temperature:number,humidity:number,pressure:number){
         this.temperature = temperature
         this.humidity = humidity
         this.pressure = pressure
@@ -302,7 +302,7 @@ class  WeatherForecastDisplay implements Observer, DisplayElement {
         this.forecastHumidity = this.lastTwoWeatcher[1].humidity + (this.lastTwoWeatcher[1].humidity - this.lastTwoWeatcher[0].humidity)
         this.forecastPressure = this.lastTwoWeatcher[1].pressure + (this.lastTwoWeatcher[1].pressure - this.lastTwoWeatcher[0].pressure)        
     }
-    updata(temperature:number,humidity:number,pressure:number){
+    update(temperature:number,humidity:number,pressure:number){
         this.lastTwoWeatcher.push({
             temperature,
             humidity,

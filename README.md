@@ -288,15 +288,15 @@ interface Subject {
 
 #### 观察者
 
-观察者拥有一个 updata 函数，当收到主题的通知时调用 updata 更新数据。
+观察者拥有一个 update 函数，当收到主题的通知时调用 update 更新数据。
 
 ```ts
 interface Observer {
-    updata(params?:any):void //根据实际项目自定义参数
+    update(params?:any):void //根据实际项目自定义参数
 }
 ```
 
-以上是观察者接口，所有潜在的观察者必须实现观察者接口，这个接口只有 updata 一个方法。
+以上是观察者接口，所有潜在的观察者必须实现观察者接口，这个接口只有 update 一个方法。
 
 #### 使用观察者模式实现气象站
 
@@ -325,7 +325,7 @@ class WeatherData implements Subject {
     }
     public notifyObservers(observers = this.observers) { // 通知观察者
         for(let observer of observers){
-            observer.updata(this.temperature,this.humidity,this.pressure) // 更新
+            observer.update(this.temperature,this.humidity,this.pressure) // 更新
         }
     }
     getTemperature(){ // 获取温度
@@ -375,7 +375,7 @@ class CurrentWeatherDisplay implements Observer, DisplayElement{ // 当前天气
     constructor(view:HTMLElement){
         this.view = view
     }
-    updata(temperature:number,humidity:number,pressure:number){
+    update(temperature:number,humidity:number,pressure:number){
         this.temperature = temperature
         this.humidity = humidity
         this.pressure = pressure

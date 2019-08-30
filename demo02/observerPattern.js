@@ -16,7 +16,7 @@ var WeatherData = /** @class */ (function () {
         if (observers === void 0) { observers = this.observers; }
         for (var _i = 0, observers_1 = observers; _i < observers_1.length; _i++) {
             var observer = observers_1[_i];
-            observer.updata(this.temperature, this.humidity, this.pressure); // 更新
+            observer.update(this.temperature, this.humidity, this.pressure); // 更新
         }
     };
     WeatherData.prototype.getTemperature = function () {
@@ -55,7 +55,7 @@ var CurrentWeatherDisplay = /** @class */ (function () {
     function CurrentWeatherDisplay(view) {
         this.view = view;
     }
-    CurrentWeatherDisplay.prototype.updata = function (temperature, humidity, pressure) {
+    CurrentWeatherDisplay.prototype.update = function (temperature, humidity, pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
@@ -98,7 +98,7 @@ var ExtremeWeatherDisplay = /** @class */ (function () {
     ExtremeWeatherDisplay.prototype.getAvgPressure = function () {
         return this.avg_pressure;
     };
-    ExtremeWeatherDisplay.prototype.updata = function (temperature, humidity, pressure) {
+    ExtremeWeatherDisplay.prototype.update = function (temperature, humidity, pressure) {
         this.history.push({
             temperature: temperature,
             humidity: humidity,
@@ -176,7 +176,7 @@ var FashionAdviceDisplay = /** @class */ (function () {
     FashionAdviceDisplay.prototype.setBaseVals = function (obj) {
         this.baseVals = obj;
     };
-    FashionAdviceDisplay.prototype.updata = function (temperature, humidity, pressure) {
+    FashionAdviceDisplay.prototype.update = function (temperature, humidity, pressure) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.pressure = pressure;
@@ -227,7 +227,7 @@ var WeatherForecastDisplay = /** @class */ (function () {
         this.forecastHumidity = this.lastTwoWeatcher[1].humidity + (this.lastTwoWeatcher[1].humidity - this.lastTwoWeatcher[0].humidity);
         this.forecastPressure = this.lastTwoWeatcher[1].pressure + (this.lastTwoWeatcher[1].pressure - this.lastTwoWeatcher[0].pressure);
     };
-    WeatherForecastDisplay.prototype.updata = function (temperature, humidity, pressure) {
+    WeatherForecastDisplay.prototype.update = function (temperature, humidity, pressure) {
         this.lastTwoWeatcher.push({
             temperature: temperature,
             humidity: humidity,
