@@ -8,6 +8,8 @@
 
 所幸 js 程序员可以使用 Typescript 来写 demo 练习。
 
+对TS还不熟悉的同学可以查看这个仓库学习 [TypeScriptTutorial](https://github.com/PsChina/TypeScriptTutorial)
+
 ## 目录
 
 1. [策略模式](#demo01-策略模式)
